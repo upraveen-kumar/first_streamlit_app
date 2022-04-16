@@ -15,5 +15,5 @@ my_fruit_list = my_fruit_list.set_index('Fruit');
 
 #multi select list -- users can pick their own fruit combo
 selected_fruits = streamlit.multiselect('pick ur choice of fruits:', list(my_fruit_list.index), ['Watermelon', 'Honeydew', 'Cantaloupe']);
-displayed_fruits = selected_fruits.loc[selected_fruits]
+displayed_fruits = my_fruit_list.loc[selected_fruits]
 streamlit.dataframe(displayed_fruits);
