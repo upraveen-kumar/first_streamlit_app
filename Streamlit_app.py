@@ -14,5 +14,5 @@ my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.co
 my_fruit_list = my_fruit_list.set_index('Fruit');
 
 #multi select list -- users can pick their own fruit combo
-streamlit.multiselect('pick ur choice of fruits:', list(my_fruit_list.index));
+streamlit.multiselect('pick ur choice of fruits:', list(my_fruit_list.index), [Watermelon, Honeydew, Cantaloupe]);
 streamlit.dataframe(my_fruit_list);
