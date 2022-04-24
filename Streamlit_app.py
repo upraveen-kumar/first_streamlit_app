@@ -19,3 +19,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit');
 selected_fruits = streamlit.multiselect('pick ur choice of fruits:', list(my_fruit_list.index), ['Watermelon', 'Honeydew', 'Cantaloupe']);
 displayed_fruits = my_fruit_list.loc[selected_fruits]
 streamlit.dataframe(displayed_fruits);
+
+#capture api-response
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/orange");
+streamlit.text(fruityvice_response);
