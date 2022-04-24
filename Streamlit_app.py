@@ -1,5 +1,7 @@
 import streamlit
 import pandas
+import requests
+
 
 streamlit.title('My Mother\'s New Diner Menu');
 streamlit.header('Breakfast Menu');
