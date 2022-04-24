@@ -21,9 +21,12 @@ displayed_fruits = my_fruit_list.loc[selected_fruits]
 streamlit.dataframe(displayed_fruits);
 
 streamlit.header('Fruity vice\'s fruit advice');
+#get fruit name from user
+fruit_name = streamlit.text_input('enter ur fruit\'s name', 'banana');
+streamlit.write ('user entered fruit name', fruit_name);
 
 #capture api-response. separate out fruit name from url
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi");
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_name);
 
 # take the json response & normalize it 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
