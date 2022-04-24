@@ -22,9 +22,9 @@ streamlit.dataframe(displayed_fruits);
 
 streamlit.header('Fruity vice\'s fruit advice');
 
-#capture api-response
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/orange");
-streamlit.text(fruityvice_response.json());
+#capture api-response. separate out fruit name from url
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi");
+
 # take the json response & normalize it 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
 streamlit.dataframe(fruityvice_normalized);
