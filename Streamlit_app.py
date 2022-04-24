@@ -20,6 +20,9 @@ selected_fruits = streamlit.multiselect('pick ur choice of fruits:', list(my_fru
 displayed_fruits = my_fruit_list.loc[selected_fruits]
 streamlit.dataframe(displayed_fruits);
 
+streamlit.header('Fruity vice\'s fruit advice');
+
 #capture api-response
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/orange");
+streamlit.text(fruityvice_response.json());
 streamlit.text(fruityvice_response);
