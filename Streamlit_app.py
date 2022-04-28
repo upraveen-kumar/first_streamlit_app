@@ -34,3 +34,10 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_n
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
 streamlit.dataframe(fruityvice_normalized);
 streamlit.text(fruityvice_response);
+
+conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
+cur = conn.cursor();
+cur.execute("select current_user(), current_account(), current_region()");
+data_row = cur.fetchone();
+streamlit.text("details fetched from streamlit settings");
+streamlit.text(data_row);
