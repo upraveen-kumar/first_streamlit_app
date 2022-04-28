@@ -32,7 +32,7 @@ def get_fruity_vice_data(fruit_name):
 
 #create a function to return data from fruit load list table
 def get_fruit_load_list():
-      with cur as conn.cursor():
+      with conn.cursor() as cur:
             cur.execute("select * from fruit_load_list");
             return cur.fetchall();
  
