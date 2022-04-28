@@ -30,13 +30,13 @@ streamlit.write ('user entered fruit name', fruit_name);
 #capture api-response. separate out fruit name from url
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_name);
 
+# tempoararily, stop further execution from here
+streamlit.stop();
+
 # take the json response & normalize it 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
 streamlit.dataframe(fruityvice_normalized);
 streamlit.text(fruityvice_response);
-
-# tempoararily, stop further execution from here
-streamlit.stop();
 
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
 cur = conn.cursor();
