@@ -49,8 +49,9 @@ try:
   if not fruit_name:
     streamlit.error('please select a fruit 2get info');
   else:
-    streamlit.write ('user entered fruit name', fruit_name);
-    if streamlit.button('get fruit load list'):
+      streamlit.write ('user entered fruit name', fruit_name);
+      streamlit.header('view our fruit list - add ur favourite');
+      if streamlit.button('get fruit list'):
       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
       fn_return = get_fruity_vice_data(fruit_name);   #fn call here
       streamlit.dataframe (fn_return);
