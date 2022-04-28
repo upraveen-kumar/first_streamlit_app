@@ -52,14 +52,14 @@ try:
       streamlit.write ('user entered fruit name', fruit_name);
       streamlit.header('view our fruit list - add ur favourite');
       if streamlit.button('get fruit list'):
-      conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
-      fn_return = get_fruity_vice_data(fruit_name);   #fn call here
-      streamlit.dataframe (fn_return);
+            conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
+            fn_return = get_fruity_vice_data(fruit_name);   #fn call here
+            streamlit.dataframe (fn_return);
       
-      streamlit.header("contents of fruit load list table");
-      data_rows = get_fruit_load_list();  # fn call here
-      conn.close();
-      streamlit.dataframe(data_rows);
+            streamlit.header("contents of fruit load list table");
+            data_rows = get_fruit_load_list();  # fn call here
+            conn.close();
+            streamlit.dataframe(data_rows);
             
 except URLError as e:
     streamlit.error();
