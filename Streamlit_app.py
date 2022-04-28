@@ -57,6 +57,7 @@ try:
       
       streamlit.header("contents of fruit load list table");
       data_rows = get_fruit_load_list();  # fn call here
+      conn.close();
       streamlit.dataframe(data_rows);
             
 except URLError as e:
@@ -68,4 +69,5 @@ if streamlit.button('add new fruit'):
       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
       fn_return = insert_fruits(new_fruit);
       streamlit.text(fn_return);
+      conn.close();
 #finally, this bloody piece of shit worked!
