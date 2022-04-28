@@ -43,3 +43,4 @@ streamlit.header("contents of fruit load list table");
 streamlit.dataframe(data_row);
 
 fruit_name = streamlit.text_input("what fruit would u like 2add from above list?");
+streamlit.text ("thanx 4adding ", fruit_name);
