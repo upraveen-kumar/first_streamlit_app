@@ -50,7 +50,7 @@ except URLError as e:
     streamlit.error();
 
 streamlit.write ('user entered fruit name', fruit_name);
-streamlit.text(fruityvice_response);
+#streamlit.text(fruityvice_normalized);
 
 if streamlit.button('get fruit load list'):
       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
