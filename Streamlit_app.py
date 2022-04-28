@@ -35,6 +35,12 @@ def get_fruit_load_list():
       with conn.cursor() as cur:
             cur.execute("select * from fruit_load_list");
             return cur.fetchall();
+
+ # insert data into snowflake
+def insert_fruits(fruit_name):
+      with conn.cursor() as cur:
+            cur.execute("insert into fruit load list values ("+ fruit_name + ")");
+            return 'thanx 4adding' + fruit_name; 
  
 streamlit.header('Fruity vice\'s fruit advice');
 #get fruit name from user
@@ -55,14 +61,10 @@ try:
       
 except URLError as e:
     streamlit.error();
-#streamlit.text(fruityvice_normalized);
 
-streamlit.stop();
-
-fruit_name = streamlit.text_input("what fruit would u like 2add from above list?", 'banana');
-streamlit.write ("thanx 4adding ", fruit_name);
-
-#exeercise 2demo control flow. rite now, below code will get executed unconditionally
-cur.execute("insert into fruit_load_list values ('from streamlit')");
-
+# allow user 2add new fruit
+fruit_name = streamlit.text_input("what fruit would u like 2add from above list?");
+if streamlit.button('add new fruit'):
+      fn_return = insert_fruits(fruit_name);
+      streamlit.text(fn_return);
       
