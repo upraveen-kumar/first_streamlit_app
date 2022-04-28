@@ -32,7 +32,6 @@ def get_fruity_vice_data(fruit_name):
 
 #create a function to return data from fruit load list table
 def get_fruit_load_list():
-      conn = snowflake.connector.connect(**streamlit.secrets['snowflake']);
       with cur as conn.cursor():
             cur.execute("select * from fruit_load_list");
             return cur.fetchall();
@@ -60,6 +59,7 @@ streamlit.text(fruityvice_response);
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
 #call fn here
 streamlit.header("contents of fruit load list table");
+conn = snowflake.connector.connect(**streamlit.secrets['snowflake']);
 data_rows = get_fruit_load_list();
 streamlit.dataframe(data_rows);
 
