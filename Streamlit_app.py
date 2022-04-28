@@ -59,13 +59,15 @@ try:
       data_rows = get_fruit_load_list();  # fn call here
       streamlit.dataframe(data_rows);
       
+      # allow user 2add new fruit
+      fruit_name = streamlit.text_input("what fruit would u like 2add from above list?");
+      if streamlit.button('add new fruit'):
+      #conn = snowflake.connector.connect(**streamlit.secrets['snowflake']);
+      fn_return = insert_fruits(fruit_name);
+      streamlit.text(fn_return);
+      
 except URLError as e:
     streamlit.error();
 
-# allow user 2add new fruit
-fruit_name = streamlit.text_input("what fruit would u like 2add from above list?");
-if streamlit.button('add new fruit'):
-      conn = snowflake.connector.connect(**streamlit.secrets['snowflake']);
-      fn_return = insert_fruits(fruit_name);
-      streamlit.text(fn_return);
+
       
