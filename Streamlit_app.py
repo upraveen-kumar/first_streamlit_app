@@ -44,3 +44,7 @@ streamlit.dataframe(data_row);
 
 fruit_name = streamlit.text_input("what fruit would u like 2add from above list?", 'banana');
 streamlit.write ("thanx 4adding ", fruit_name);
+
+#exeercise 2demo control flow. rite now, below code will get executed unconditionally
+cur.execute("insert into fruit_load_list values ('from streamlit')");
+
