@@ -37,10 +37,10 @@ def get_fruit_load_list():
             return cur.fetchall();
 
  # insert data into snowflake
-def insert_fruits(fruit_name):
+def insert_fruits(new_fruit):
       with conn.cursor() as cur:
             cur.execute("insert into fruit_load_list values ('from streamlit')");
-            return 'thanx 4adding' + fruit_name; 
+            return 'thanx 4adding ' + new_fruit; 
  
 streamlit.header('Fruity vice\'s fruit advice');
 #get fruit name from user
@@ -58,15 +58,13 @@ try:
       streamlit.header("contents of fruit load list table");
       data_rows = get_fruit_load_list();  # fn call here
       streamlit.dataframe(data_rows);
-      
-# allow user 2add new fruit
-fruit_name = streamlit.text_input("what new fruit would u like 2add?");
-if streamlit.button('add new fruit'):
-      conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
-      fn_return = insert_fruits(fruit_name);
-      streamlit.text(fn_return);
-      
+            
 except URLError as e:
     streamlit.error();
 
-      
+# allow user 2add new fruit
+new_fruit = streamlit.text_input("what new fruit would u like 2add?");
+if streamlit.button('add new fruit'):
+      conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
+      fn_return = insert_fruits(new_fruit);
+      streamlit.text(fn_return);
