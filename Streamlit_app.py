@@ -58,7 +58,7 @@ if streamlit.button('get fruit load list'):
       data_rows = get_fruit_load_list();  # fn call here
       streamlit.dataframe(data_rows);
       
- streamlit.stop();
+streamlit.stop();
 
 fruit_name = streamlit.text_input("what fruit would u like 2add from above list?", 'banana');
 streamlit.write ("thanx 4adding ", fruit_name);
