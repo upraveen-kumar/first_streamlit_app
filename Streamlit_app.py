@@ -46,18 +46,18 @@ try:
     if streamlit.button('get fruit load list'):
       fn_return = get_fruity_vice_data(fruit_name);   #fn call here
       streamlit.dataframe (fn_return);
+      
+       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
+      streamlit.header("contents of fruit load list table");
+      data_rows = get_fruit_load_list();  # fn call here
+      streamlit.dataframe(data_rows);
+      
 except URLError as e:
     streamlit.error();
 
 streamlit.write ('user entered fruit name', fruit_name);
 #streamlit.text(fruityvice_normalized);
 
-if streamlit.button('get fruit load list'):
-      conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
-      streamlit.header("contents of fruit load list table");
-      data_rows = get_fruit_load_list();  # fn call here
-      streamlit.dataframe(data_rows);
-      
 streamlit.stop();
 
 fruit_name = streamlit.text_input("what fruit would u like 2add from above list?", 'banana');
