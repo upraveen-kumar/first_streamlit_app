@@ -32,6 +32,7 @@ def get_fruity_vice_data(fruit_name):
 
 #create a function to return data from fruit load list table
 def get_fruit_load_list():
+      conn = snowflake.connector.connect(**streamlit.secrets['snowflake']);
       with cur as conn.cursor():
             cur.execute("select * from fruit_load_list");
             return cur.fetchall();
@@ -43,8 +44,9 @@ try:
   if not fruit_name:
     streamlit.error('please select a fruit 2get info');
   else:
-    fn_return = get_fruity_vice_data(fruit_name);
-    streamlit.dataframe (fn_return);
+    if streamlit.button('get fruit load list'):
+      fn_return = get_fruity_vice_data(fruit_name);
+      streamlit.dataframe (fn_return);
 
 except URLError as e:
     streamlit.error();
