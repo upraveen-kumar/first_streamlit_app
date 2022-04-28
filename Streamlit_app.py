@@ -28,7 +28,7 @@ try:
   fruit_name = streamlit.text_input('enter ur fruit\'s name');
   if not fruit_name:
     streamlit.error('please select a fruit 2get info');
-  else
+  else:
     #capture api-response. separate out fruit name from url
       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_name);
       # take the json response & normalize it 
