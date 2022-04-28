@@ -12,6 +12,9 @@ streamlit.text('🥗 kale, spinach & rocket smootie');
 streamlit.text('🐔 hard boiled free range egg');
 streamlit.text('🥑🍞 avocado toast');
 
+# tempoararily, stop further execution from here
+streamlit.stop();
+
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇');
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt");
 #instead of giving index by nbr, give it a name i.e in the multi select below, index is now fruit name (1st col of csv file), instead of position!
@@ -29,9 +32,6 @@ streamlit.write ('user entered fruit name', fruit_name);
 
 #capture api-response. separate out fruit name from url
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_name);
-
-# tempoararily, stop further execution from here
-streamlit.stop();
 
 # take the json response & normalize it 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
