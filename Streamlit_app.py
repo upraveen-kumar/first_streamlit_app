@@ -38,6 +38,6 @@ streamlit.text(fruityvice_response);
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
 cur = conn.cursor();
 cur.execute("select * from fruit_load_list");
-data_row = cur.fetchone();
+data_row = cur.fetchall();
 streamlit.header("contents of fruit load list table");
 streamlit.dataframe(data_row);
