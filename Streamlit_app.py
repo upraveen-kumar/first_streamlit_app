@@ -68,3 +68,4 @@ if streamlit.button('add new fruit'):
       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
       fn_return = insert_fruits(new_fruit);
       streamlit.text(fn_return);
+#finally, this bloody piece of shit worked!
