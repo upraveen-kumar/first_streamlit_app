@@ -39,7 +39,7 @@ def get_fruit_load_list():
  # insert data into snowflake
 def insert_fruits(fruit_name):
       with conn.cursor() as cur:
-            cur.execute("insert into fruit load list values ('from streamlit')");
+            cur.execute("insert into fruit_load_list values ('from streamlit')");
             return 'thanx 4adding' + fruit_name; 
  
 streamlit.header('Fruity vice\'s fruit advice');
