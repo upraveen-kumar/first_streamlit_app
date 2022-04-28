@@ -47,7 +47,7 @@ try:
       fn_return = get_fruity_vice_data(fruit_name);   #fn call here
       streamlit.dataframe (fn_return);
       
-       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
+      conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
       streamlit.header("contents of fruit load list table");
       data_rows = get_fruit_load_list();  # fn call here
       streamlit.dataframe(data_rows);
