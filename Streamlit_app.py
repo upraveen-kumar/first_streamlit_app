@@ -43,10 +43,11 @@ try:
   if not fruit_name:
     streamlit.error('please select a fruit 2get info');
   else:
+    streamlit.write ('user entered fruit name', fruit_name);
     if streamlit.button('get fruit load list'):
       fn_return = get_fruity_vice_data(fruit_name);   #fn call here
       streamlit.dataframe (fn_return);
-      streamlit.write ('user entered fruit name', fruit_name);
+      
       conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
       streamlit.header("contents of fruit load list table");
       data_rows = get_fruit_load_list();  # fn call here
