@@ -49,9 +49,6 @@ try:
 
 except URLError as e:
     streamlit.error();
-    
-# tempoararily, stop further execution from here
-streamlit.stop();
 
 streamlit.write ('user entered fruit name', fruit_name);
 streamlit.text(fruityvice_response);
