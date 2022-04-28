@@ -1,8 +1,8 @@
 import streamlit
-import pandas
-import requests
+#import pandas
+#import requests
 import snowflake.connector
-
+from urllib.error import urlerror
 
 
 streamlit.title('My Mother\'s New Diner Menu');
@@ -34,6 +34,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_n
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
 streamlit.dataframe(fruityvice_normalized);
 streamlit.text(fruityvice_response);
+
+# tempoararily, stop further execution from here
+streamlit.stop();
 
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
 cur = conn.cursor();
