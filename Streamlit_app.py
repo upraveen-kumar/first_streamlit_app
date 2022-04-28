@@ -37,7 +37,7 @@ streamlit.text(fruityvice_response);
 
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
 cur = conn.cursor();
-cur.execute("select current_user(), current_account(), current_region()");
+cur.execute("select * from fruit_load_list");
 data_row = cur.fetchone();
-streamlit.text("details fetched from streamlit settings");
+streamlit.text("contents of fruit load list table");
 streamlit.text(data_row);
