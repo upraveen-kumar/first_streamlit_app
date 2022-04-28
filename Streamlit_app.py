@@ -29,7 +29,13 @@ def get_fruity_vice_data(fruit_name):
       # take the json response & normalize it 
       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()); 
       return (fruityvice_normalized);
-  
+
+#create a function to return data from fruit load list table
+def get_fruit_load_list():
+      with cur as conn.cursor():
+            cur.execute("select * from fruit_load_list");
+            return cur.fetchall();
+ 
 streamlit.header('Fruity vice\'s fruit advice');
 #get fruit name from user
 try:
@@ -50,11 +56,10 @@ streamlit.write ('user entered fruit name', fruit_name);
 streamlit.text(fruityvice_response);
 
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"]);
-cur = conn.cursor();
-cur.execute("select * from fruit_load_list");
-data_row = cur.fetchall();
+#call fn here
 streamlit.header("contents of fruit load list table");
-streamlit.dataframe(data_row);
+data_rows = get_fruit_load_list();
+streamlit.dataframe(data_rows);
 
 fruit_name = streamlit.text_input("what fruit would u like 2add from above list?", 'banana');
 streamlit.write ("thanx 4adding ", fruit_name);
